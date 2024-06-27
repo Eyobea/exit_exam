@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>questions list</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <style>
+      .cardbody{
+        margin: 20px;
+      }
+      .card{
+        margin: 30px;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+      }
+      body{
+        background-color: rgb(157, 186, 194) ;
+        justify-content: center;
+      }
+      h1{
+        color: white;
+      }
+      .mb-3{
+        margin: 10px;
+      }
+      .font-1{
+        font-family: fantasy ;
+        color: rgb(67, 119, 215);
+      }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <!-- Navbar -->
+      <%- include('./partials/navbar') %>
+      <!-- End navbar -->
+      <div class="card">
+        <div class="cardbody">
+        <form action="/exam/saveExam" method="post">
+
+
+
+          <h3 class="font-1">your result is <%= grade %> %</h5>
+
+          
+          <button class="btn btn-outline-info" type="submit">save</button>
+        </form>
+      </div>
+      </div>  
+  </body>
+</html>

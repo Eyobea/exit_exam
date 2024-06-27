@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard page</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <style>
+      body {
+        background-color: rgb(157, 186, 194);
+        margin-left: 295px;
+        width: 500px;
+        height: 150px;
+      }
+      .card {
+        margin-top: 10px;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">REGISTER</div>
+        <div class="card-body">
+          <form action="/auth/register" method="post">
+            <div class="mb-3">
+              <label for="fullName" class="form-label"
+                >Enter you full name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="fullName"
+                aria-describedby="emailHelp"
+              />
+            <div class="mb-3">
+              <label for="email" class="form-label">Enter your email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="studentId" class="form-label"
+                >Enter your id number</label
+              >
+              <input type="text" class="form-control" name="studentId" />
+            </div>
+            <div class="mb-3">
+              <label for="studentId" class="form-label"
+                >Enter a new password</label
+              >
+              <input type="password" class="form-control" name="password" />
+            </div>
+
+            <div class="mb-3">
+              <label for="departmentId" class="form-label"
+                >Select your department</label
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="departmentId"
+              >
+                <% data.forEach(element=> { %>
+                <option value="<%= element.id %>"><%= element.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Login</button>
+            <p>Already have an account <a href="/auth/login">Sign in</a></p>
+          </form>  
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

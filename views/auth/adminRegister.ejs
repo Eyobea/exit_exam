@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard page</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <style>
+      body {
+        background-color: rgb(157, 186, 194);
+      }
+      .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 90px;
+      }
+      .card {
+        width: 400px;
+        height: 400px;
+        background-color: whitesmoke;
+      }
+      .btn-primary {
+        margin-left: 140px;
+      }
+      p {
+        margin-left: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">Admin SIGN UP</div>
+        <div class="card-body">
+          <form action="/auth/adminRegister" method="post">
+            <div class="mb-3">
+              <label for="fullName" class="form-label"
+                >Enter you full name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Enter your email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label"
+                >Enter a new password</label
+              >
+              <input type="password" class="form-control" name="password" />
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">
+              Sign up
+            </button>
+            <p>
+              already have an account <a href="/auth/adminLogin">sign in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

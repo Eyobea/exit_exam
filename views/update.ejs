@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+            .cardbody{
+        margin: 20px;
+      }
+      .card{
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+      }
+      body{
+        background-color: rgb(30, 107, 128) ;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      button{
+        padding: 50px;
+        margin: 10px 30px 0 30px ;
+      }
+      .card-header{
+        background-color: darkgray;
+        color:rgb(33, 110, 173);
+        font-size: large;
+        font-weight: 600;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-style:oblique;
+      }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+       <!-- Navbar -->
+       <%- include('./partials/navbar') %>
+       <!-- End navbar -->
+        <form action="/admin/update/<%= data.id %>" method="post">
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example" name="examId">
+                  <% options.forEach(element => { %>
+                    <option <%= element.id === data.examId ? "selected" : "" %> value="<%= element.id %>"><%= element.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <div class="card">
+                  <div class="card-header">Update this question</div>
+                  <div class="card-body">
+            <input type="text" class="form-control" name="question" value="<%= data.question %>" required>
+            <input type="text" class="form-control" name="optionA" value="<%= data.optionA %>" required>
+            <input type="text" class="form-control" name="optionB" value="<%= data.optionB %>" required>
+            <input type="text" class="form-control" name="optionC" value="<%= data.optionC %>" required>
+            <input type="text" class="form-control" name="optionD" value="<%= data.optionD %>" required>
+            <label for="answer">Correct Answer:</label><br>
+            <input type="radio" id="answer" name="answer" value=1 required> Option A<br>
+            <input type="radio" id="answer" name="answer" value=2> Option B<br>
+            <input type="radio" id="answer" name="answer" value=3> Option C<br>
+            <input type="radio" id="answer" name="answer" value=4> Option D<br>
+            <hr>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        
+      </div>
+    
+</body>
+</html>

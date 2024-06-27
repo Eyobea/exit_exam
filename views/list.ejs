@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>questions list</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <style>
+    .cardbody{
+      margin: 20px;
+    }
+    .card{
+      margin: 30px;
+      width: 1000px;
+      display: flex;
+      justify-content: center;
+    }
+    body{
+      background-color: rgb(157, 186, 194) ;
+      justify-content: center;
+      margin: 0;
+    }
+    h1{
+      color: rgb(10, 10, 10);
+    }
+    .mb-3{
+      margin: 10px;
+    }
+   
+  </style>
+  <body>
+    <div class="container-fluid">
+      <!-- Navbar -->
+      <%- include('./partials/navbarstudent') %>
+      <!-- End navbar -->
+      <div class="mb-3">
+        <form action="/admin/list" method="post">
+
+          <select
+          class="form-select"
+          aria-label="Default select example"
+          name="examId"
+          >
+          <% data.forEach(element => { %>
+            <option value="<%= element.id %>"><%= element.name %></option>
+            <% }) %>
+          </select>
+          <button class="btn btn-primary" type="submit">submit</button>
+        </form>
+      </div>
+
+      <h1>Questions</h1>
+      <% for (let i=0; i < questions.length; i++) { %>
+      <div class="card">
+       <div class="card-header"> <h3>Question <%= i + 1 %></h3></div>
+        <div class="cardbody">
+          <span>
+            <%= questions[i].question %>
+            <a
+              href="/admin/update/<%= questions[i].id%>"
+              class="btn btn-outline-success bi bi-pen"
+            ></a>
+
+            <button
+              type="button"
+              data-name="<%= questions[i].question %>"
+              data-id="<%= questions[i].id %>"
+              class="btn btn-outline-danger deleteBtn"
+            >
+              <span><i class="bi bi-trash"></i></span>
+            </button>
+          </span>
+          <ul class="">
+            <li class=""><%= questions[i].optionA %></li>
+            <li><%= questions[i].optionB %></li>
+            <li><%= questions[i].optionC %></li>
+            <li><%= questions[i].optionD %></li>
+          </ul>
+          <p>Answer: <%= questions[i].answer %></p>
+        </div>
+      </div>
+    </div>
+
+    <% } %> <%- include('./partials/modal') %>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+      const array = document.getElementsByClassName("deleteBtn");
+      for (let n = 0; n < array.length; n++) {
+        array[n].addEventListener("click", function (event) {
+          const element = event.currentTarget.dataset;
+          const message =
+            "<div>Are you sure you want to delete this question: <span class='text-danger'>" +
+            element.name.toUpperCase() +
+            "</span></div>";
+          document.getElementById("modalBody").innerHTML = message;
+          document
+            .getElementById("confirmHref")
+            .setAttribute("href", "/admin/delete/" + element.id);
+          const modalElement = document.getElementById("modalDialog");
+          const modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        });
+      }
+    </script>
+  </body>
+</html>

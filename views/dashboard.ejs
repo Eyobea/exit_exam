@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coursera Course Cards</title>
+   <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+
+<style>
+  .available-courses {
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+.card img {
+  width: 100%; /* Stretch image to fit card width */
+  height: 150px; /* Adjust image height as desired */
+  object-fit: cover; /* Crop image to fit within the dimensions while maintaining aspect ratio */
+}
+</style>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <section class="available-courses">
+    <h2 class="section-header">Available Courses</h2>
+
+       <div class="card-container">
+    <% for (let i = 0; i < data.length; i++) { %>
+      <div class="card-container">
+        <div class="card" style="width: 18rem;">
+          <img src="/img/computer.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= data[i].name %></h5>
+            <form action="/dashboard/home/<%= data[i].id %>" method="post">
+            <button type="submit" class="btn btn-primary">take exam</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

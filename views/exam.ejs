@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <title>exam page</title>
+    <style>
+      .cardbody{
+        margin: 20px;
+      }
+      .card{
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+      }
+      body{
+        background-color: rgb(157, 186, 194) ;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      button{
+        padding: 50px;
+        margin: 10px 30px 0 30px ;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex">
+      <!-- Navbar -->
+      <%- include('./partials/navbarstudent') %>
+      <!-- End navbar -->
+
+       
+        <form action="/exam/grade" method="post">
+          <% for (let i = 0; i < questions.length; i++) { %>
+          <div class="card">
+            <div class="cardbody">
+            <h3>Question <%= i + 1 %></h3>
+            <p><%= questions[i].question %></p>
+            <label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="answer<%= i %>"
+                value="1"
+              />
+              A. <%= questions[i].optionA %>
+            </label>
+            <br />
+            <label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="answer<%= i %>"
+                value="2"
+              />
+              B. <%= questions[i].optionB %>
+            </label>
+            <br />
+            <label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="answer<%= i %>"
+                value="3"
+              />
+              C. <%= questions[i].optionC %>
+            </label>
+            <br />
+            <label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="answer<%= i %>"
+                value="4"
+              />
+              D. <%= questions[i].optionD %>
+            </label>
+          </div>
+          </div>
+          <% } %>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>

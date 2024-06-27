@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard page</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <style>
+      body{
+        background-color: rgb(157, 186, 194);
+        margin: 30px;
+        margin-left: 260px;
+        margin-top: 90px;
+        width: 700px;
+        height: 100px;
+        display: flexbox;
+        justify-content: center;
+        
+      }
+
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+     
+          <div class="card">
+            <div class="card-header">LOGIN</div>
+            <div class="card-body">
+              <form action="/auth/login" method="post">
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Enter your email</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label"
+                    >Enter your password</label
+                  >
+                  <input type="password" class="form-control" name="password" />
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary">Login</button>
+               <p> don't have an account ? <a href="/auth/register"> Sign Up</a></p>
+                <p>Admin Login <a href="/auth/adminLogin">click here</a></p>
+              </form>
+            </div>
+         
+    </div>
+  </body>
+</html>

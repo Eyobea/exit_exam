@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create page</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.icons.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+   <style>
+      body{
+        background-color: rgb(157, 186, 194);
+      }
+      .card{
+        margin-top: 20px;
+      }
+    </style>
+   </style>
+      
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- Navbar -->
+      <%- include('./partials/navbarstudent') %>
+      <!-- End navbar -->
+
+      <!-- content -->
+
+      <div class="card">
+        <div class="card-body">
+          <form action="/admin/create" method="post">
+            <div class="mb-3">
+              <label for="name" class="form-label">Enter the exam name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <p>select department</p>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="departmentId"
+              >
+                <% data.forEach(element=> { %>
+                <option value="<%= element.id %>"><%= element.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
